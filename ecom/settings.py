@@ -135,7 +135,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL = 'user.CustomUser'
 
-CORS_ALLOW_ALL_ORIGINS = True;
+CORS_ORIGIN_ALLOW_ALL= True;
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
