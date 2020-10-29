@@ -21,12 +21,28 @@ const Signup = () =>{
 
     const onSubmit = (event) =>{
         event.preventDefault();
-        setValues({...values,error:false})
+        setValues({ ...values, error: false });
         signup({ name, email, password })
-            .then(data =>{
-                console.log("DATA"+data);
-            })
-            .catch(err=>console.log(err))
+        .then(data => {
+            console.log("DATA",  data);
+            if (data.email === email) {
+            setValues({
+                ...values,
+                name: "",
+                email: "",
+                password: "",
+                error: "",
+                success: true,
+            });
+            } else {
+            setValues({
+                ...values,
+                error: true,
+                success: false,
+            });
+            }
+        })
+        .catch((e) => console.log(e));
     };
 
     const signUpForm = () =>{
@@ -45,7 +61,7 @@ const Signup = () =>{
                     </div>
                     <div className="form-group">
                     <label className="text-light">Email</label>
-                    <input
+                    <inputrouter
                         className="form-control"
                         value={email}
                         onChange={handleChange("email")}
