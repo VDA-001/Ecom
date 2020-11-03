@@ -12,7 +12,7 @@ export const signup = (user) =>{
         body: JSON.stringify(user),
     })
     .then(response =>{
-        return response.JSON();
+        return response.json();
     })
     .catch(err => console.log(err));
 };
@@ -22,11 +22,22 @@ export const signin = (user) =>{
     for(const name in user){
         formData.append(name, user[name]);
     }
+
+    // const {email, password} = user;
+    // const formData=new FormData();
+    // formData.append('email',email)
+    // formData.append('password',password)
+
+    for(var key of formData.keys()){
+        console.log("My key",key);
+    }
+
     return fetch(`${API}user/login/`,{
         method:"POST",
-        body:FormData
+        body:formData
     })
     .then(response => {
+        console.log("SUCCESS", response);
         return response.json();
     })
     .catch(err=>console.log(err));
