@@ -28,10 +28,10 @@ const Signin =()=>{
         signin({email,password})
         .then(data=>{
             console.log("DATA", data);
-            if(data.token){
-                let sessionToken = data.token;
-                authenticat(sessionToken, ()=>{
-                    console.log("HAHAHA");
+            if (data.token){
+                //let sessionToken = data.token;
+                authenticat(data, ()=>{
+                    console.log("Token added");
                     setValues({
                         ...values,
                         didRedirect: true,
