@@ -18,7 +18,7 @@ gateway = braintree.BraintreeGateway(
 
 
 def validate_user_session(id, token):
-    UserModel = get_user_model
+    UserModel = get_user_model()
 
     try:
         user = UserModel.objects.get(pk=id)
