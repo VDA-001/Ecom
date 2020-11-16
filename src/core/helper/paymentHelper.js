@@ -1,13 +1,13 @@
-import {API} from "../../backend"
+import {API} from "../../backend";
 
 export const getmeToken = (userId, token) => {
     return fetch(`${API}payment/gettoken/${userId}/${token}/`,{
         method:"GET",
     })
-    .then(response => {
+    .then((response) => {
         return response.json();
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err));
 };
 
 
@@ -21,7 +21,8 @@ export const processPayment = (userId, token, paymentInfo) =>{
         body: formData
     })
     .then(response =>{
+        console.log("p-0",response);
         return response.json();
     })
-    .catch(err => console.log(err))
+    //.catch(err => console.log(err))
 }
