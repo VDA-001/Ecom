@@ -65,10 +65,10 @@ const PaymentB = ({
                 amount: getAmount(),
         }
             processPayment(userId, token, paymentData)
-            .then(response => {
+            .then((response) => {
                 console.log("p-1",response);
                 if (response.error){
-                    if(response.code == "1"){
+                    if(response.code === "1"){
                         console.log("Payment failed")
                         signout(() => {
                             return <Redirect to="/" />
@@ -91,22 +91,23 @@ const PaymentB = ({
                     }
                     createOrder(userId, token, orderData)
                     .then(response => {
+                        console.log("success-2");
                         if (response.error){
-                            if(response.code == "1"){
+                            if(response.code === "1"){
                                 console.log("ORDER FAILED")
                             }
                             signout(() =>{
                                 return <Redirect to="/" />
                             })
                         }else{
-                            if(response.success == true){
+                            if(response.success === true){
                                 console.log("ORDER PLACED")
                             }
                         }
                     })
                     .catch(error => {
                         setInfo({loading: false, success: false})
-                        console.log("ORDER FAILED", error)
+                        console.log("ORDER FAILED",error)
                     })
                     cartEmpty(() => {
                         console.log("CART IS EMTIED OUT")
