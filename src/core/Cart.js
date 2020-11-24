@@ -17,6 +17,7 @@ const Cart = () =>{
         return(
             <div>
                 {products.map((products, index)=>(
+                    <div>
                     <Card 
                         key={index} 
                         product={products} 
@@ -25,6 +26,8 @@ const Cart = () =>{
                         reload={reload}
                         setReload={setReload}
                     />
+                    <hr />
+                    </div>
                 ))}
             </div>
         );
@@ -40,12 +43,12 @@ const Cart = () =>{
     return(
         <Base title="Cart page" description="Welcome to checkout">
             <div className="row text-center">
-                <div className="col-6">
+                <div className="col-3 CartElements">
                     {products.length>0 ? (loadAllProducts(products)) : (
                         <h4>No products</h4>
                     )}
                 </div>
-                <div className="col-6">
+                <div className=" col-5 PaymentGateway">
                     {products.length>0 ? (
                         <PaymentB products={products} setReload={setReload} />
                     ) : (

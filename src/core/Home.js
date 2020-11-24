@@ -27,12 +27,11 @@ export default function Home(){
     }, []);
 
     return (
-        <Base title="Home Page" description="Welcome to tshirt store">
-            <h1>Home component</h1>
+        <Base title="Welcome to Tshirt store" description="Home page">
             <div className="row">
                 {products.map((product,index)=>{
                     return(
-                        <div key={index} className="col-4 mb-4">
+                        <div key={index} className="col-2 HomeCotainer mb-4">
                             <Card  product={product}/>
                         </div>
                     );

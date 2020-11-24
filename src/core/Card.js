@@ -36,7 +36,7 @@ const Card = ({
       }
     };
     
-    const showAddToCart = addToCart =>{
+    const showAddToCart = (addToCart) =>{
       return(
         addtoCart && (
           <button
@@ -67,23 +67,40 @@ const Card = ({
     };
 
     return (
-      <div className="card text-white bg-dark border border-light ">
-        <div className="card-header lead">{cardTitle}</div>
+      // <div className="card CardContainer border border-dark">
+      //   <div className="card-header lead">{cardTitle}</div>
+      //   <div className="card-body">
+      //     {getAredirect(redirect)}
+      //     <ImageHelper product={product} />
+      //     <p className="lead font-weight-normal rounded p-2">
+      //       {cardDescription}
+      //     </p>
+      //     <p className="btn btn-success rounded  btn-sm px-4">$ {cardPrice}</p>
+      //     <div className="row">
+      //       <div className="col-12">
+      //         {showAddToCart(addToCart)}
+      //       </div>
+      //       <div className="col-12">
+      //         {showRemoveFromCart(removeFromCart)}
+      //       </div>
+      //     </div>
+      //   </div>
+      // </div>
+      <div className="card">
+        {getAredirect(redirect)}
+        <ImageHelper product={product} />
         <div className="card-body">
-          {getAredirect(redirect)}
-          <ImageHelper product={product} />
-          <p className="lead bg-dark font-weight-normal text-light rounded p-2">
-            {cardDescription}
-          </p>
-          <p className="btn btn-success rounded  btn-sm px-4">$ {cardPrice}</p>
+          <h5 className="card-title">{cardTitle}</h5>
+          <p className="card-text">{cardDescription}</p>
+          <p className="rounded PriceParagraph">$ {cardPrice}</p>
           <div className="row">
-            <div className="col-12">
-              {showAddToCart(addToCart)}
-            </div>
-            <div className="col-12">
-              {showRemoveFromCart(removeFromCart)}
-            </div>
-          </div>
+             <div className="col-12">
+               {showAddToCart(addToCart)}
+             </div>
+             <div className="col-12">
+               {showRemoveFromCart(removeFromCart)}
+             </div>
+           </div>
         </div>
       </div>
     );
