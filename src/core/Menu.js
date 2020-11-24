@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
 import { Link, withRouter } from "react-router-dom";
-
+import TshirtIcon from "../Icon/TshirtIcon.png"
 import { signout, isAuthenticated } from "../auth/helper";
 
 const currentTab = (history, path) => {
   if (history.location.pathname === path) {
-    return { color: "#2ecc72" };
+    return { color: "#48cae4" };
   } else {
     return { color: "#FFFFFF" };
   }
@@ -14,7 +14,10 @@ const currentTab = (history, path) => {
 const Menu = ({ history, path }) => {
   return (
     <div>
-      <ul className="nav nav-tabs bg-dark">
+      <ul className="nav nav-tabs fixed-top justify-content-center NavBar">
+        <a class="navbar-brand" href="/">
+          <img src={TshirtIcon} width="30" height="30" alt="" loading="lazy" />
+        </a>
         <li className="nav-item">
           <Link
             style={currentTab(history, "/")}
@@ -40,7 +43,7 @@ const Menu = ({ history, path }) => {
               className="nav-link"
               to="/user/dashboard"
             >
-              dashboard
+              Dashboard
             </Link>
           </li>
         )}
@@ -68,17 +71,17 @@ const Menu = ({ history, path }) => {
         )}
 
         {isAuthenticated() && (
-          <li className="nav-item">
-            <span
+          <li className="nav-item signouts">
+            <a href="/"
               onClick={() => {
                 signout(() => {
                   history.push("/");
                 });
               }}
-              className="nav-link text-warning"
+              className="nav-link text-light"
             >
               Signout
-            </span>
+            </a>
           </li>
         )}
       </ul>

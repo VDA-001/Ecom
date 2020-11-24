@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Redirect} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import {cartEmpty} from "./helper/cartHelper";
 import {getmeToken, processPayment} from "./helper/paymentHelper";
 import {createOrder} from "./helper/orderHelper";
@@ -131,7 +131,10 @@ const PaymentB = ({
                             options={{authorization: info.clientToken}}
                             onInstance={instance => (info.instance = instance)}
                             ></DropIn>
-                            <button onClick={onPurchase} className="btn btn-block btn-success">Buy now</button>
+                            <button onClick={onPurchase} className="btn btn-block btn-dark">Buy now</button>
+                            <Link to="/">
+                                <button className="btn btn-block btn-outline-dark ShoppingButton">Continue Shopping</button>
+                            </Link>
                         </div>
                     ) : (
                         <h3>Please login first or add something in cart</h3>

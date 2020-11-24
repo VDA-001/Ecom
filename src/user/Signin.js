@@ -88,12 +88,12 @@ const Signin =()=>{
 
     const signInForm = () =>{
         return(
-            <div className="row">
+            <div className="rowSignin">
                 <div className="col-md-6 offset-sm-3 text-left">
                 <form>
                     
                     <div className="form-group">
-                    <label className="text-light">Email</label>
+                    <label className="text-dark">Email</label>
                     <input
                         className="form-control"
                         value={email}
@@ -102,7 +102,7 @@ const Signin =()=>{
                     />
                     </div>
                     <div className="form-group">
-                    <label className="text-light">password</label>
+                    <label className="text-dark">password</label>
                     <input
                         className="form-control"
                         value={password}
@@ -112,7 +112,7 @@ const Signin =()=>{
                     </div>
                     <button
                     onClick={onSubmit}
-                    className="btn btn-success btn-block"
+                    className="btn btn-dark btn-block"
                     >
                     Submit
                     </button>
@@ -128,7 +128,6 @@ const Signin =()=>{
             {successMessage()}
             {errorMessage()}
             {signInForm()}
-            <p className="text-center">{JSON.stringify(values)}</p>
             {performRedirect()}
         </Base>
     );
