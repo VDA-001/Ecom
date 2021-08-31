@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Link, withRouter } from "react-router-dom";
-import TshirtIcon from "../Icon/TshirtIcon.png"
+import TshirtIcon from "../Icon/TshirtIcon.png";
 import { signout, isAuthenticated } from "../auth/helper";
 
 const currentTab = (history, path) => {
@@ -19,23 +19,21 @@ const Menu = ({ history, path }) => {
           <img src={TshirtIcon} width="30" height="30" alt="" loading="lazy" />
         </a>
         <li className="nav-item">
-          <Link
-            style={currentTab(history, "/")}
-            className="nav-link"
-            to="/"
-          >
+          <Link style={currentTab(history, "/")} className="nav-link" to="/">
             Home
           </Link>
         </li>
-        <li className="nav-item">
-          <Link
-            style={currentTab(history, "/cart")}
-            className="nav-link"
-            to="/cart"
-          >
-            Cart
-          </Link>
-        </li>
+        {isAuthenticated() && (
+          <li className="nav-item">
+            <Link
+              style={currentTab(history, "/cart")}
+              className="nav-link"
+              to="/cart"
+            >
+              Cart
+            </Link>
+          </li>
+        )}
         {isAuthenticated() && (
           <li className="nav-item">
             <Link
@@ -72,7 +70,8 @@ const Menu = ({ history, path }) => {
 
         {isAuthenticated() && (
           <li className="nav-item signouts">
-            <a href="/"
+            <a
+              href="/"
               onClick={() => {
                 signout(() => {
                   history.push("/");

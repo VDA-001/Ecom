@@ -50,7 +50,7 @@ const PaymentB = ({ products, reload = undefined, setReload = (f) => f }) => {
   const onPurchase = () => {
     setInfo({ loading: true });
     let nonce;
-    let getNonce = info.instance
+    info.instance
       .requestPaymentMethod()
       .then((data) => {
         console.log("MYDATA", data);
