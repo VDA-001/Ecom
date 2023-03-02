@@ -153,3 +153,13 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+BRAINTREE_MERCHANT_ID='bk7ns9zg5sw95h4b'
+
+# if (len(sys.argv) >= 2 and sys.argv[1] == 'runserver'):
+#     BRAINTREE_PRODUCTION = False
+# else:
+#     BRAINTREE_PRODUCTION = True
+#     BRAINTREE_MERCHANT_ID = "87rh85xynv99mwcg"
+#     BRAINTREE_PUBLIC_KEY = "tr633275k8qb8rx3"
+#     BRAINTREE_PRIVATE_KEY = "7e6406d538682a79d0c768b1a29613fc"

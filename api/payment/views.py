@@ -4,16 +4,18 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.views.decorators.csrf import csrf_exempt
 import braintree
+from django.conf import settings
+
 
 # Create your views here.
 
 gateway = braintree.BraintreeGateway(
-    braintree.Configuration(
-        braintree.Environment.Sandbox,
-        merchant_id="3zd8gsd8r77t9wfc",
-        public_key="x8gwskp939mfyvcf",
-        private_key="5216a79c2820d9a9cc57a2b04a0e19f8"
-    )
+  braintree.Configuration(
+    environment=braintree.Environment.Sandbox,
+    merchant_id='bk7ns9zg5sw95h4b',
+    public_key='4p8yk66nky638585',
+    private_key='90dba8b3a410e35ae61c3f6a112a07d6'
+  )
 )
 
 
@@ -33,8 +35,14 @@ def validate_user_session(id, token):
 def generate_token(request, id, token):
     if not validate_user_session(id, token):
         return JsonResponse({'error' : 'Invalid session, Please login again!'})
-    
-    return JsonResponse({'clientToken':gateway.client_token.generate(), 'success':True})
+
+    try:
+        #clientToken = gateway.client_token.generate({'customer_id':id})
+        clientToken = gateway.client_token.generate(
+        params={'merchant_account_id': settings.BRAINTREE_MERCHANT_ID})
+        return JsonResponse({'clientToken':clientToken, 'success':True})
+    except:
+        return JsonResponse({'clientToken':gateway.client_token.generate({}), 'success':True})
 
 
 @csrf_exempt

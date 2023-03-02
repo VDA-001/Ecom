@@ -5,6 +5,7 @@ export const getmeToken = (userId, token) => {
         method:"GET",
     })
     .then((response) => {
+        console.log("HELLo");
         return response.json();
     })
     .catch(error => console.log(error));
