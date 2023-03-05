@@ -1,0 +1,13 @@
+---
+execution: 50
+- concurrency: 50
+  hold-for: 3m
+  ramp-up: 2m
+  
+  scenario: Load Home Page
+scenarios:
+  Load Home Page:
+    requests:
+    - label: HomePage
+      method: GET
+      url: http://localhost:8000/
