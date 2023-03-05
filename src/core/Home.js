@@ -3,6 +3,7 @@ import Base from "./Base";
 import { getProducts } from "./helper/coreapicals";
 import "../styles.css";
 import Card from "./Card";
+import { isAuthenticated } from "../auth/helper";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -25,7 +26,7 @@ export default function Home() {
 
   return (
     <Base title="Welcome to Tshirt store" description="Home page">
-      <p style={{ textAlign: "center" }}>Login to add to cart</p>
+      {!isAuthenticated() && <p style={{ textAlign: "center" }}>Login to add to cart</p>}
       <div className="row">
         {products.map((product, index) => {
           return (
