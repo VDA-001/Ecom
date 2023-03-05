@@ -15,6 +15,7 @@ sqlparse = "==0.4.1"
 django = "*"
 pillow = "*"
 braintree = "*"
+dj-database-url = "*"
 
 [requires]
 python_version = "3.8"
